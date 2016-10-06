@@ -1,4 +1,5 @@
 var playerFactory = function($http) {
+  // object factory à construire avant retour
   var factory = {};
   var players = [];
 
@@ -47,6 +48,7 @@ var playerFactory = function($http) {
     // par rapport au du club passé en entrée
   };
 
+  // on retourne l'object factory
   return factory;
 };
 

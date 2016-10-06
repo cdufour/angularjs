@@ -1,0 +1,9 @@
+https://github.com/cdufour/angularjs
+Télécharger le .zip
+Dézipper
+Ouvrir le dossier dans Atom
+Démarrer le server de développement atom
+
+Ouvrir le terminal windows
+se rendre dans le même dossier
+démarrer le server node (node server.js)

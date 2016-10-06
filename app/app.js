@@ -23,3 +23,10 @@ angular.module('testApp', ['ngRoute'])
       })
       .otherwise({redirectTo:'/404'});
   });
+
+angular.module('testApp')
+  .constant('SETTINGS', {
+    version: '1.0',
+    author: 'Chris',
+    year: '2016'
+  });

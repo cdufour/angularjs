@@ -10,6 +10,10 @@ var mainController = function($scope, $interval, playerFactory) {
     $scope.action = 'Démarrer';
     $scope.isVisible = false; // utilisé pour la visibité de l'image
 
+    // chargement des équipes
+    // idéalement : à récupér par le biais d'un service/factory
+    $scope.clubs = ['PSG', 'Juventus', 'Parma', 'Manchester', 'Porto'];
+
     // variables locales (privées)
     var isSlideshowRunning = false; // flag
     var interv = null;

@@ -22,6 +22,12 @@
 
     </div>
 
+    <footer ng-controller="footerController">
+      Version {{settings.version}} -
+      Copyright {{settings.author}} -
+      {{settings.year}}
+    </footer>
+
     <script src="scripts/angular.min.js"></script>
     <script src="scripts/angular-route.min.js"></script>
 
@@ -31,7 +37,9 @@
     <script src="app/controllers/menuController.js"></script>
     <script src="app/controllers/helpController.js"></script>
     <script src="app/controllers/playerController.js"></script>
+    <script src="app/controllers/footerController.js"></script>
     <!-- services/factories -->
     <script src="app/services/playerFactory.js"></script>
+    <script src="app/services/languageService.js"></script>
   </body>
 </html>
