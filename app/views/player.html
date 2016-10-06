@@ -1,0 +1,18 @@
+<h2>Zoom sur {{player.name}}</h2>
+
+<div class="row">
+  <div class="col-md-6">
+    <img
+      ng-src="img/{{player.picture}}"
+      alt="{{player.name}}"
+      style="width:400px"
+    >
+  </div>
+  <div class="col-md-6">
+    <p>Numéro: {{player.number}}</p>
+    <p>Né le {{player.birthdate | date:'dd/MM/yyyy'}}</p>
+    <p>Clubs:
+      <span ng-repeat="club in player.clubs">{{club.name}} </span>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <meta charset="utf-8">
+    <title>Formation Angularjs</title>
+    <style>
+      th {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body ng-init="isChecked=true;isLogged=false;masquerTxt='Masquer';isVisible=true;maton='Marcellus';tonton='Wallas';joursSemaine=['lun','mar','mer','jeu','ven','sam','dim']">
+    <h1>Formation Angular</h1>
+    <div>{{ tonton }}</div>
+
+    <div ng-if="isLogged"> /* le div est créé (dans le DOM) si vrai
+      mais reste visible dans le code source... */
+      ton numéro de CB est : 4973 7777 7777 7777
+    </div>
+
+    <input type="text" name="name" ng-model="maton">
+    <div>{{ maton }}</div>
+
+    <button type="button" name="button" ng-click="isVisible=!isVisible;masquerTxt='Afficher'">{{masquerTxt}} la liste</button>
+    <div ng-show="isVisible">
+      <ul>
+        <li ng-repeat="jour in joursSemaine">
+          {{jour | uppercase}}
+          <button ng-click="joursSemaine.splice($index,1)">Supprimer</button>
+        </li>
+      </ul>
+    </div>
+
+
+    <select>
+      <option>{{ maton }}</option>
+      <option>{{ maton }}</option>
+      <option>{{ maton }}</option>
+    </select>
+
+    <input type="checkbox" name="name" ng-model="isChecked">
+
+    <div ng-init="dates=['2015-06-06', '2016-12-18']">
+      <span ng-repeat="d in dates">
+        {{d | date:"dd/MM/yyyy"}}
+      </span>
+    </div>
+    <br><br>
+
+
+    <div ng-init="players=[{name:'Pogba', number:10},{name:'Nedved', number:6},{name:'Del Piero', number:10}]">
+
+      <form ng-init="player={}">
+        Name:<input type="text" ng-model="player.name">
+        Number:<input type="text" ng-model="player.number">
+        <button ng-click="players.push(player);player={}">Add player</button>
+      </form>
+
+      <br><br>
+
+
+      <input type="text" ng-model="search">
+      <select ng-model="selectedNumber">
+        <option>1</option>
+        <option>5</option>
+        <option>6</option>
+        <option>8</option>
+        <option>10</option>
+      </select>
+      <button ng-click="selectedNumber='';search=''">Reset filters</button>
+      <table>
+        <thead>
+          <tr>
+            <th ng-click="selectedProp='name';isReverse=!isReverse">Nom</th>
+            <th ng-click="selectedProp='number';isReverse=!isReverse">Numéro</th>
+          </tr>
+        </thead>
+        <tbody ng-init="selectedProp='name';isReverse=false">
+          <tr ng-repeat="player in players | filter:search | filter:selectedNumber | orderBy:selectedProp:isReverse">
+            <td>{{player.name | uppercase}}</td>
+            <td>{{player.number}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+
+
+    <script src="scripts/angular.min.js"></script>
+  </body>
+</html>

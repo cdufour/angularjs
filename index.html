@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="testApp">
+  <head>
+    <meta charset="utf-8">
+    <title>SPA angularjs</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <nav ng-controller="menuController">
+      <ul class="nav navbar-nav">
+        <li ng-repeat="m in menu">
+          <a href="{{m.url}}">{{m.label}}</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="clearfix"></div>
+
+    <!-- conteneur pour les templates chargés dynamiquement
+    lors du routage -->
+    <div ng-view>
+
+    </div>
+
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/angular-route.min.js"></script>
+
+    <script src="app/app.js"></script>
+    <!-- controllers -->
+    <script src="app/controllers/mainController.js"></script>
+    <script src="app/controllers/menuController.js"></script>
+    <script src="app/controllers/helpController.js"></script>
+    <script src="app/controllers/playerController.js"></script>
+    <!-- services/factories -->
+    <script src="app/services/playerFactory.js"></script>
+  </body>
+</html>

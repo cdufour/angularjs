@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>AJAX</title>
+  </head>
+  <body>
+
+    <div id="players">
+
+    <div>
+
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script>
+    $(document).ready(function() {
+      var players = [];
+
+      $.ajax({
+        url: 'data/players.json',
+        method: 'GET',
+        success: function(data) {
+          players = data;
+          for (var i=0; i<players.length; i++) {
+            $('#players').append('<div>' + players[i].name + '</div>');
+          }
+
+          // deuxième requête
+          $.ajax({
+            url: 'data/clubs.json',
+            method: 'GET',
+            success: function(clubs) {console.log(clubs)},
+            error: function() {console.log('Erreur')}
+          })
+        },
+        error: function() {
+          console.log('erreur !');
+        }
+      });
+
+
+
+    });
+
+    </script>
+  </body>
+</html>

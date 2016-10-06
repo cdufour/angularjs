@@ -1,0 +1,39 @@
+<div>
+
+  <button
+    class="btn btn-primary"
+    ng-click="slideshow()">{{action}} slideshow
+  </button>
+
+  <div style="position:absolute;left:200px">
+    <img ng-show="isVisible" ng-src="img/{{pictureHover}}" alt="" style="width:300px">
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <th class="clicable" ng-click="changeOrder('name')">Nom</th>
+      <th class="clicable" ng-click="changeOrder('number')">Numéro</th>
+      <th>Photo</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="player in players | orderBy:selectedProp:isReversed">
+        <td>{{player.name}}</td>
+        <td>{{player.number}}</td>
+        <td>
+          <img
+            ng-src="img/{{player.picture}}"
+            ng-click="showBigPicture(player.picture)"
+            alt="{{player.name}}"
+            style="width:50px">
+        </td>
+        <td>
+          <a
+            class="btn btn-default"
+            href="#/players/{{player.id}}">Détails
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

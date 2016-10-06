@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="testApp">
+  <head>
+    <meta charset="utf-8">
+    <title>SPA angularjs</title>
+  </head>
+  <body>
+
+
+    <nav ng-controller="menuController">
+      <ul>
+        <li ng-repeat="m in menu">
+          <a href="/{{m}}">{{m}}</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div ng-controller="mainController">
+      <h2>{{title}}</h2>
+      <button ng-click="slideshow()">{{action}} slideshow</button>
+
+      <div style="position:absolute;left:200px">
+        <img ng-show="isVisible" ng-src="img/{{pictureHover}}" alt="" style="width:300px">
+      </div>
+
+      <table>
+        <thead>
+          <th ng-click="changeOrder('name')">Nom</th>
+          <th ng-click="changeOrder('number')">Numéro</th>
+          <th>Photo</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="player in players | orderBy:selectedProp:isReversed">
+            <td>{{player.name}}</td>
+            <td>{{player.number}}</td>
+            <td>
+              <img
+                ng-src="img/{{player.picture}}"
+                ng-mouseover="showBigPicture(player.picture)"
+                alt="{{player.name}}"
+                style="width:50px">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/angular-route.min.js"></script>
+
+    <script src="app/app.js"></script>
+
+  </body>
+</html>
