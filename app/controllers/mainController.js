@@ -61,6 +61,39 @@ var mainController = function($scope, $interval, playerFactory) {
       }
       isSlideshowRunning = !isSlideshowRunning;
     };
+
+    $scope.customFilter = function(element) {
+      // retourne vrai si la propriété number est supérieure 6
+      //return element.number > 6 ? true : false;
+
+      //return (element.name.indexOf('o') != -1) ? true : false;
+      //return (element.name === 'Pogba') ? true : false;
+
+      /*
+      if ($scope.search) {
+        return (element.name.indexOf($scope.search) != -1) ? true : false;
+      } else {
+        return true;
+      }
+      */
+      if ($scope.search) {
+
+        if (
+          element.name.indexOf($scope.search) != -1 ||
+          element.number == $scope.search
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+
+      } else {
+        return true;
+      }
+
+
+
+    };
   };
 
   // callack executé en cas d'échec de la requête ajax

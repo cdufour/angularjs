@@ -28,7 +28,10 @@
       <th>Actions</th>
     </thead>
     <tbody>
-      <tr ng-repeat="player in players | filter:searchClub | filter:search | orderBy:selectedProp:isReversed">
+      <tr ng-repeat="
+        player in players |
+        filter:customFilter |
+        orderBy:selectedProp:isReversed">
         <td>{{player.name}}</td>
         <td>{{player.number}}</td>
         <td>
