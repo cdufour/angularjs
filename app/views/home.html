@@ -26,6 +26,8 @@
     </select>
   </div>
 
+  <p>{{filteredPlayers.length}} / {{players.length}}</p>
+
   <table class="table table-striped">
     <thead>
       <th class="clicable" ng-click="changeOrder('name')">Nom</th>
@@ -36,12 +38,12 @@
     </thead>
     <tbody>
       <tr ng-repeat="
-        player in players |
-        filter:customFilter |
+        player in filteredPlayers=(players |
+        filter:customFilter) |
         orderBy:selectedProp:isReversed">
-        <td>{{player.name | ellipse:2}}</td>
+        <td>{{player.name | ellipse:5}}</td>
         <td>{{player.number}}</td>
-        <td>{{player.nbGoals}}</td>
+        <td ng-class="isCapoCannoniere(player.nbGoals)">{{player.nbGoals}}</td>
         <td>
           <img
             ng-src="img/{{player.picture}}"

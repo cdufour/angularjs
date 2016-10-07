@@ -121,6 +121,21 @@ var mainController = function($scope, $interval, playerFactory) {
       }
 
     };
+
+    $scope.isCapoCannoniere = function(nbGoals) {
+      var players = $scope.players;
+      var max = 0;
+      for (var i=0; i<players.length; i++) {
+        max = players[i].nbGoals;
+
+        if (players[i].nbGoals > max) {
+          max = players[i].nbGoals;
+        }
+      }
+      console.log(max);
+      return max == nbGoals ? 'maxGoals' : '';
+
+    };
   };
 
   // callack executé en cas d'échec de la requête ajax

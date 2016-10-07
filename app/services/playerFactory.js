@@ -49,8 +49,8 @@ var playerFactory = function($http) {
   };
 
   factory.addPlayer = function(player) {
-    console.log(player);
-    return $http.post('http://localhost:5000/player/new');
+    // envoie du player au serveur
+    return $http.post('http://localhost:5000/player/new', player);
   };
 
   // on retourne l'object factory

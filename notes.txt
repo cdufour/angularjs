@@ -10,3 +10,7 @@ plus de 10 caractères.
 Exemple :
 
 "Joao Poalo de Sousa de Riveira de Nascimento" => "Joao Paolo..."
+
+npm install body-parser
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // for parsing application/json

@@ -1,3 +1,8 @@
 .clicable {
   cursor: pointer
 }
+
+.maxGoals {
+  color: green;
+  font-weight: bold
+}

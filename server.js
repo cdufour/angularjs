@@ -1,5 +1,6 @@
 var http = require('http');
 var express = require('express');
+var bodyParser = require('body-parser');
 
 var app = express();
 
@@ -46,6 +47,10 @@ var players = [
   {id:6, name:'Higuain', number:9, picture:'higuain.jpg', nbGoals:265},
 ];
 
+// permet de travailler avec le format json
+// dans les requêtes en post (body)
+app.use(bodyParser.json());
+
 
 app.use(function(req, res, next) {
   // ajoute à l'entête de la réponse l'autorisation cross-origin
@@ -80,9 +85,31 @@ app.get('/players/:id', function(req, res) {
 });
 
 app.post('/player/new', function(req, res) {
+  var id = getLastId(players);
+
+  var player = {
+    id: id + 1, // incrémentation de l'id
+    name: req.body.name,
+    number: parseInt(req.body.number),
+    nbGoals: parseInt(req.body.nbGoals)
+  };
+  // ajout du player au tableau (database) des players
+  players.push(player);
   res.json('merci');
 });
 
 app.listen(5000, function() {
   console.log('Server node écoute le port 5000...');
 });
+
+// Function permettat d'obtenir l'id le plus élevé
+// dans un tableau d'objets disposant d'une propriété id
+function getLastId(array) {
+  var maxId = 0;
+  for(var i=0; i<array.length; i++) {
+    if (array[i].id > maxId) {
+      maxId = array[i].id;
+    }
+  }
+  return maxId;
+}
