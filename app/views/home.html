@@ -18,12 +18,19 @@
     <select ng-model="searchClub">
       <option ng-repeat="club in clubs">{{club}}</option>
     </select>
+
+    <select ng-model="nbGoalsSearch">
+      <option value="{{g.val}}" ng-repeat="g in goalsRange">
+        {{g.label}}
+      </option>
+    </select>
   </div>
 
   <table class="table table-striped">
     <thead>
       <th class="clicable" ng-click="changeOrder('name')">Nom</th>
       <th class="clicable" ng-click="changeOrder('number')">Numéro</th>
+      <th class="clicable" ng-click="changeOrder('nbGoals')">Nombre de buts</th>
       <th>Photo</th>
       <th>Actions</th>
     </thead>
@@ -32,8 +39,9 @@
         player in players |
         filter:customFilter |
         orderBy:selectedProp:isReversed">
-        <td>{{player.name}}</td>
+        <td>{{player.name | ellipse:2}}</td>
         <td>{{player.number}}</td>
+        <td>{{player.nbGoals}}</td>
         <td>
           <img
             ng-src="img/{{player.picture}}"

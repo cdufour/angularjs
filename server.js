@@ -14,7 +14,8 @@ var players = [
       {name:'Juventus', period:'2014-2016'}
     ],
     birthdate:'2000-03-03',
-    foot: 'right'
+    foot: 'right',
+    nbGoals: 38
   },
   {
     id:2, name:'Del Piero',
@@ -24,11 +25,12 @@ var players = [
       {name:'Juventus', period:'1994-2012'}
     ],
     birthdate:'1974-03-03',
-    foot: 'right'
+    foot: 'right',
+    nbGoals: 291
   },
   {
     id:3,
-    name:'Buffon',
+    name:'buffon',
     number:1,
     picture:'buffon.jpg',
     clubs: [
@@ -36,11 +38,12 @@ var players = [
       {name:'Juventus', period:'2014-2016'}
     ],
     birthdate:'1950-03-03',
-    foot: 'left'
+    foot: 'left',
+    nbGoals: 0
   },
-  {id:4, name:'Nedved', number:6, picture:'nedved.jpg'},
-  {id:5, name:'Lemina', number:6, picture:'lemina.jpg'},
-  {id:6, name:'Higuain', number:9, picture:'higuain.jpg'},
+  {id:4, name:'nedved', number:6, picture:'nedved.jpg', nbGoals:165},
+  {id:5, name:'Lemina', number:6, picture:'lemina.jpg', nbGoals:5},
+  {id:6, name:'Higuain', number:9, picture:'higuain.jpg', nbGoals:265},
 ];
 
 
@@ -76,6 +79,9 @@ app.get('/players/:id', function(req, res) {
 
 });
 
+app.post('/player/new', function(req, res) {
+  res.json('merci');
+});
 
 app.listen(5000, function() {
   console.log('Server node écoute le port 5000...');

@@ -1,1 +1,12 @@
 filter:{number:'10', name:'ro'} |
+
+https://github.com/cdufour/angularjs
+
+Créer un filtre "ellipseFilter"
+qui prend en entrée une chaîne de caractères de longueur variable
+et renvoie une version abrégée de cette chaîne si elle contient
+plus de 10 caractères.
+
+Exemple :
+
+"Joao Poalo de Sousa de Riveira de Nascimento" => "Joao Paolo..."

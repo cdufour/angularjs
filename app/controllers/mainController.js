@@ -14,9 +14,20 @@ var mainController = function($scope, $interval, playerFactory) {
     // idéalement : à récupér par le biais d'un service/factory
     $scope.clubs = ['PSG', 'Juventus', 'Parma', 'Manchester', 'Porto'];
 
+    $scope.goalsRange = [
+      {val:'all', label:'--Nombre de buts inscrits--'},
+      {val:'0-50', label:'entre 0 et 50'},
+      {val:'50-100', label:'entre 50 et 100'},
+      {val:'100-150', label:'entre 100 et 150'},
+      {val:'150-200', label:'entre 150 et 200'},
+      {val:'200-10000', label:'plus de 200'},
+    ];
+
     // variables locales (privées)
     var isSlideshowRunning = false; // flag
     var interv = null;
+
+    $scope.nbGoalsSearch = 'all';
 
     $scope.changeOrder = function(prop) {
       $scope.selectedProp = prop;
@@ -76,6 +87,8 @@ var mainController = function($scope, $interval, playerFactory) {
         return true;
       }
       */
+
+      /*
       if ($scope.search) {
 
         if (
@@ -90,8 +103,22 @@ var mainController = function($scope, $interval, playerFactory) {
       } else {
         return true;
       }
+      */
 
-
+      var val = $scope.nbGoalsSearch;
+      if (val != "all") {
+        var result = val.split('-');
+        var min = result[0];
+        var max = result[1];
+        var goals = element.nbGoals;
+        if (goals >= min && goals < max) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return true;
+      }
 
     };
   };

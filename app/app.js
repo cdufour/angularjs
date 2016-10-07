@@ -18,6 +18,10 @@ angular.module('testApp', ['ngRoute'])
         controller:'helpController',
         templateUrl:'app/views/help.html'
       })
+      .when('/admin', {
+        controller:'adminController',
+        templateUrl:'app/views/admin.html'
+      })
       .when('/404', {
         templateUrl:'app/views/404.html'
       })

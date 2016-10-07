@@ -48,6 +48,11 @@ var playerFactory = function($http) {
     // par rapport au du club passé en entrée
   };
 
+  factory.addPlayer = function(player) {
+    console.log(player);
+    return $http.post('http://localhost:5000/player/new');
+  };
+
   // on retourne l'object factory
   return factory;
 };
